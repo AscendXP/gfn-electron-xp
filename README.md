@@ -47,7 +47,7 @@ You will need to install [npm](https://www.npmjs.com/), the Node.js package mana
 Once you have npm, clone the wrapper to a convenient location:
 
 ```bash
-git clone https://github.com/hmlendea/gfn-electron.git
+git clone https://github.com/AscendXP/gfn-electron-with-hardware-acceleration-test
 ```
 
 ## Building
