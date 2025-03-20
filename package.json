@@ -1,8 +1,8 @@
 {
-  "name": "geforcenow-electron",
-  "appId": "com.github.hmlendea.${name}",
+  "name": "GeForce-NOW",
+  "appId": "com.github.AscendXP.${name}",
   "productName": "GeForce NOW",
-  "version": "2.1.0",
+  "version": "2.1.3-XP1",
   "description": "A Linux desktop web app for GeForce NOW",
   "main": "scripts/main.js",
   "scripts": {
@@ -20,25 +20,24 @@
       "artifactName": "${name}_${version}_linux.${ext}"
     },
     "extraFiles": [
-      "com.github.hmlendea.${name}.desktop"
+      "com.github.AscendXP.${name}.desktop"
     ]
   },
-  "repository": "https://github.com/hmlendea/gfn-electron",
+  "repository": "https://github.com/AscendXP/gfn-electron-with-hardware-acceleration",
   "keywords": [
     "Electron",
     "gfn",
     "geforcenow",
     "geforce-now"
   ],
-  "author": "Horațiu Mlendea <io.github.hmlendea.cnzq9@SimpleLogin.fr>",
+  "author": "AscendXP fork but OG:Horațiu Mlendea <io.github.hmlendea.cnzq9@SimpleLogin.fr>",
   "license": "GPL-3.0",
   "devDependencies": {
-    "electron-builder": "^25.1.8",
-    "electron": "^35.0.2"
+    "electron": "^35.0.2",
+    "electron-builder": "^25.1.8"
   },
   "dependencies": {
     "discord-rich-presence": "^0.0.8",
-    "electron-localshortcut": "^3.2.1",
-    "find-process": "^1.4.10"
+    "electron-localshortcut": "^3.2.1"
   }
 }
