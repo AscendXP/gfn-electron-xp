@@ -1,9 +1,12 @@
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/fund.html) [![Build Status](https://github.com/hmlendea/gfn-electron/actions/workflows/node.js.yml/badge.svg)](https://github.com/hmlendea/gfn-electron/actions/workflows/node.js.yml) [![Latest GitHub release](https://img.shields.io/github/v/release/hmlendea/gfn-electron)](https://github.com/hmlendea/gfn-electron/releases/latest)
 
-# About
 Only works with X11/Xwayland. Wayland cause mouse issues.
-
-Unofficial client for Nvidia's GeForce NOW game streaming service, providing a native Linux desktop experience and some additional features such as Discord rich presence.
+if on Wayland add the flag (--ozone-platform-hint=x11)
+# About
+Original Creator : https://github.com/hmlendea/gfn-electron
+Im not gonna work on this, just fixing some of my problems
+ 
+ Unofficial client for Nvidia's GeForce NOW game streaming service, providing a native Linux desktop experience and some additional features such as Discord rich presence.
 
 ## Disclaimer
 
