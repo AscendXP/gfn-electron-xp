@@ -11,7 +11,7 @@ var userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like
 console.log('Using user agent: ' + userAgent);
 console.log('Process arguments: ' + process.argv);
 
-app.commandLine.appendSwitch('enable-features', 'AcceleratedVideoDecodeLinuxGL,VaapiVideoDecoder,VaapiIgnoreDriverChecks,RawDraw');
+app.commandLine.appendSwitch('enable-features', 'AcceleratedVideoDecodeLinuxGL,VaapiVideoDecoder,VaapiIgnoreDriverChecks');
 app.commandLine.appendSwitch('log-level', '3');
 
 app.commandLine.appendSwitch(
