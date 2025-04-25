@@ -39,6 +39,11 @@ jobs:
           repo_tag=$(echo "$repo_release_info" | jq -r .tag_name | sed 's/^v//')
           echo "Repo release tag: $repo_tag"
 
+          if [ -z "$electron_tag" ] || [ -z "$repo_tag" ]; then
+            echo "Failed to fetch release tags. Exiting."
+            exit 1
+          fi
+
           echo "ELECTRON_TAG=$electron_tag" >> $GITHUB_ENV
           echo "REPO_TAG=$repo_tag" >> $GITHUB_ENV
 
@@ -68,12 +73,8 @@ jobs:
             echo "- 🧪 arm64 builds (untested)"
             echo "- ♻️ Auto-builds to latest Electron version"
             echo "- 🧊 Forked from hmlendea/gfn-electron"
+            echo "- 🧱 Includes prebuilt Auto-Update AppImages (x86_64 & arm64)"
           } > release_notes.txt
-
-          release_notes=$(cat release_notes.txt)
-          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
-          echo "$release_notes" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
 
       # Step 6.5: Inject Electron version into artifact name
       - name: Inject Electron version into artifact name
@@ -83,6 +84,17 @@ jobs:
       - name: Build the Electron app
         run: |
           npx electron-builder --linux "AppImage" "zip" --arm64 --x64 --publish never
+
+      # Step 7.5: Download prebuilt AppImages and move to dist
+      - name: Download prebuilt AppImages from repo
+        run: |
+          mkdir -p dist
+
+          curl -L -o "dist/GeForce_NOW_(Auto-Update)-x86_64.AppImage" \
+            https://raw.githubusercontent.com/AscendXP/gfn-electron-xp/main/GFN-Auto-Update-x86_64/GeForce_NOW_(Auto-Update)-x86_64.AppImage
+
+          curl -L -o "dist/GeForce_NOW_(Auto-Update)-arm64.AppImage" \
+            https://raw.githubusercontent.com/AscendXP/gfn-electron-xp/main/GFN-Auto-Update-arm64/GeForce_NOW_(Auto-Update)-arm64.AppImage
 
       # Step 8: Create or Update GitHub Release
       - name: Create or Update GitHub Release
@@ -96,14 +108,14 @@ jobs:
             echo "Release exists, updating..."
             gh release edit "$tag" \
               --title "${{ env.RELEASE_NAME }}" \
-              --notes "${{ env.RELEASE_NOTES }}"
+              --notes-file release_notes.txt
 
             gh release upload "$tag" dist/*.AppImage dist/*.zip --clobber
           else
             echo "Creating new release..."
             gh release create "$tag" \
               --title "${{ env.RELEASE_NAME }}" \
-              --notes "${{ env.RELEASE_NOTES }}"
+              --notes-file release_notes.txt
 
             gh release upload "$tag" dist/*.AppImage dist/*.zip
           fi
