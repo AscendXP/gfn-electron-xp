@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=Game;
+Comment[en_US]=GeForce NOW Cloud Gaming
+Comment=GeForce NOW Cloud Gaming
+Exec=GeForceNOW-XP
+GenericName[en_US]=
+GenericName=
+Icon=icon
+MimeType=
+Name[en_US]=GeForce NOW with Auto-Update
+Name=GeForce NOW with Auto-Update
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-KDE-SubstituteUID=false
+X-KDE-Username=
