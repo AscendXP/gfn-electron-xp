@@ -3,6 +3,7 @@
 # About
 (I'm not going to be working on this. Just adding feature I like for my own use, but you may like the features too 🙂.)
 Since Electron is auto-update Wayland my fix it self within time and you can add the flag --ozone-platform=wayland to testout your self)
+(if using the Auto-Update Downloads are stored in .config/GeForce NOW/DownloadXP)
 
 Unofficial client for Nvidia's GeForce NOW game streaming service, providing a native Linux desktop experience and some additional features such as Discord rich presence.
 
