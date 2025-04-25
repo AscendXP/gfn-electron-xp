@@ -91,10 +91,10 @@ jobs:
           mkdir -p dist
 
           curl -L -o "dist/GeForce_NOW_(Auto-Update)-x86_64.AppImage" \
-            "https://raw.githubusercontent.com/AscendXP/gfn-electron-xp/main/GFN-Auto-Update-x86_64/GeForce_NOW_(Auto-Update)-x86_64.AppImage"
+            "https://raw.githubusercontent.com/AscendXP/gfn-electron-xp/main/GFN-Auto-Update-x86_64/GeForce_NOW_Auto-Update_-x86_64.AppImage"
 
           curl -L -o "dist/GeForce_NOW_(Auto-Update)-arm64.AppImage" \
-            "https://raw.githubusercontent.com/AscendXP/gfn-electron-xp/main/GFN-Auto-Update-arm64/GeForce_NOW_(Auto-Update)-arm64.AppImage"
+            "https://raw.githubusercontent.com/AscendXP/gfn-electron-xp/main/GFN-Auto-Update-arm64/GeForce_NOW_Auto-Update_-arm64.AppImage"
 
       # Step 8: Create or Update GitHub Release
       - name: Create or Update GitHub Release
