@@ -1,2 +1,5 @@
 #!/bin/bash
-exec usr/bin/GeForceNOW-XP "$@"
+SELF=$(readlink -f "$0")
+HERE=${SELF%/*}
+EXEC="${HERE}/usr/bin/GeForceNOW-XP"
+exec "${EXEC}"
