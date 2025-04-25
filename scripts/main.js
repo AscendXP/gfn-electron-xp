@@ -20,8 +20,8 @@ process.on('unhandledRejection', (reason, promise) => {
 
 app.commandLine.appendSwitch('enable-features', 'VaapiVideoDecoder,VaapiIgnoreDriverChecks,AcceleratedVideoDecodeLinuxGL,UseOzonePlatform,UseOzonePlatform,TouchpadOverscrollHistoryNavigation,VaapiVideoDecodeLinuxGL');
 app.commandLine.appendSwitch("ozone-platform-hint", "auto");
-app.commandLine.appendSwitch('disable-features', 'UseChromeOSDirectVideoDecoder');
 app.commandLine.appendSwitch("enable-wayland-ime");
+app.commandLine.appendSwitch("wayland-text-input-version", "2");
 app.commandLine.appendSwitch('enable-accelerated-video');
 app.commandLine.appendSwitch('ignore-gpu-blocklist');
 
