@@ -4,7 +4,7 @@ const path = require('path');
 const { DiscordRPC } = require('./rpc.js');
 const { switchFullscreenState } = require('./windowManager.js');
 var homePage = 'https://play.geforcenow.com/mall/';
-var userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36';
+var userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36';
 
 console.log('Using user agent: ' + userAgent);
 console.log('Process arguments: ' + process.argv);
@@ -20,7 +20,7 @@ process.on('unhandledRejection', (reason, promise) => {
 
 app.commandLine.appendSwitch('enable-features', 'VaapiVideoDecoder,VaapiIgnoreDriverChecks,AcceleratedVideoDecodeLinuxGL,UseOzonePlatform,UseOzonePlatform,TouchpadOverscrollHistoryNavigation,VaapiVideoDecodeLinuxGL');
 app.commandLine.appendSwitch("ozone-platform-hint", "auto");
-app.commandLine.appendSwitch("enable-wayland-ime");
+app.commandLine.appendSwitch("enable-wayland-ime");      //wayland still do not work for me for my mouse but when it does Ihave touch screen  keyboard support working for my Laptop yay!
 app.commandLine.appendSwitch("wayland-text-input-version", "2");
 app.commandLine.appendSwitch('enable-accelerated-video');
 app.commandLine.appendSwitch('ignore-gpu-blocklist');
