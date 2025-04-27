@@ -69,10 +69,10 @@ jobs:
             echo ""
             echo "**Changelog:**"
             echo "- ✅ Hardware Acceleration enabled by default"
-            echo "- 🛠️ Discord RPC fix & ESC button issue resolved"
+            echo "- 🛠️ Discord RPC fix, ESC button issue resolved, & Google account login fix"
             echo "- 🛎️ Added notifications for when the game is ready"
             echo "- 🧪 arm64 builds (untested)"
-            echo "- ♻️ Auto-builds to latest Electron version & Auto-update support included (in the build that say GeForce_NOW_Auto-Update_-...)"
+            echo "- ♻️ Auto-builds to latest Electron version & Auto-update support included (in the build that say GeForce_NOW_Auto-Update)"
             echo "- 🧊 Forked from hmlendea/gfn-electron"
           } > release_notes.txt
 
