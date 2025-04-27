@@ -14,15 +14,10 @@ Unofficial client for Nvidia's GeForce NOW game streaming service, providing a n
 
 This project and its contributors are not affiliated with Nvidia, nor its GeForce NOW product. This repository does not contain any Nvidia / GeForce NOW software. It is simply an Electron wrapper that loads the official GFN web application page, just as it would in a regular web browser.
 
-# Installation
-
-[![Get it from the AUR](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/aur.png)](https://aur.archlinux.org/packages/geforcenow-electron/) [![Get it from FlatHub](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/flathub.png)](https://flathub.org/apps/details/io.github.hmlendea.geforcenow-electron)
-
-***Note**: The main version of this project, which receives the most support, is the flatpak version hosted on FlatHub!*
 
 ## Manual Installation
 
- - Go to the [latest release](https://github.com/hmlendea/gfn-electron/releases/latest).
+ - Go to the [latest release](https://github.com/AscendXO/gfn-electron-xp/releases/latest).
  - Download the specific file that best fits your distro.
 
 ***Note**: Manual installations are possible but not supported. Please use the flatpak version if you have any trouble with the manual installation!*
