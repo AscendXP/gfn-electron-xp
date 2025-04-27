@@ -17,7 +17,7 @@ function DiscordRPC(title) {
 
     client.updatePresence({
         details: d,
-        state: `Not affiliated with NVIDIA`,
+        state: `The way it's meant to be played`, // i like their old slogan better
         startTimestamp: Date.now(),
         largeImageKey: 'icon',
         instance: true,
