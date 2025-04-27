@@ -17,7 +17,7 @@ This project and its contributors are not affiliated with Nvidia, nor its GeForc
 
 ## Manual Installation
 
- - Go to the [latest release](https://github.com/AscendXO/gfn-electron-xp/releases/latest).
+ - Go to the [latest release](https://github.com/AscendXP/gfn-electron-xp/releases/latest).
  - Download the specific file that best fits your distro.
 
 ***Note**: Manual installations are possible but not supported. Please use the flatpak version if you have any trouble with the manual installation!*
