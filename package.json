@@ -11,7 +11,8 @@
     "build": "npm run prebuild && electron-builder --publish never"
   },
   "build": {
-    "asar": false,
+    "asar": true,
+    "compression": "maximum",
     "linux": {
       "target": [
         {
@@ -49,7 +50,7 @@
     "geforcenow",
     "geforce-now"
   ],
-  "author": "AscendXP Orginial by: Mlendea <io.github.hmlendea.cnzq9@SimpleLogin.fr>",
+  "author": "AscendXP Original by: Mlendea <io.github.hmlendea.cnzq9@SimpleLogin.fr>",
   "license": "GPL-3.0",
   "devDependencies": {
     "electron": "latest",
