@@ -132,7 +132,7 @@ async function createWindow() {
   const mainWindow = new BrowserWindow({
     fullscreenable: true,
     show: false,
-    icon: path.join(__dirname, "assets/resources/infinitylogo.png"),
+    icon: path.join(__dirname, "icon.png"),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
                                        contextIsolation: false,
