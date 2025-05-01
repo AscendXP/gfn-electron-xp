@@ -1,6 +1,6 @@
-[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/fund.html) [![Build Status](https://github.com/hmlendea/gfn-electron/actions/workflows/node.js.yml/badge.svg)](https://github.com/hmlendea/gfn-electron/actions/workflows/node.js.yml) [![Latest GitHub release](https://img.shields.io/github/v/release/hmlendea/gfn-electron)](https://github.com/hmlendea/gfn-electron/releases/latest)
-
-# About
+# Geforce NOW for Linux
+Go to the [latest release](https://github.com/AscendXP/gfn-electron-xp/releases/latest).
+## About
 (I won't be actively working on this project, but I am adding features that I find useful for my own purposes. You might find these features helpful as well 🙂.)
 
 Since Electron supports auto-updates, Wayland support will be fixed over time. You can also manually test it by adding the --ozone-platform=wayland flag.
