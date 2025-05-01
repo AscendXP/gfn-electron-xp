@@ -66,7 +66,7 @@ app.whenReady().then(async () => {
             new Notification({
               title: "GeForce NOW",
               body: `${title.replace(' on GeForce NOW', '')} is ready to play`,
-              icon: path.join(process.cwd(), 'icon.png')
+                             icon: path.join(__dirname, "icon.png")
             }).show();
 
             notified = true;
@@ -133,11 +133,11 @@ async function createWindow() {
     fullscreenable: true,
     show: false,
     icon: path.join(__dirname, "icon.png"),
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+                                       webPreferences: {
+                                         preload: path.join(__dirname, 'preload.js'),
                                        contextIsolation: false,
                                        userAgent: userAgent,
-    },
+                                       },
   });
 
   if (process.argv.includes('--direct-start')) {
