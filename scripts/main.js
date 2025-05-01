@@ -60,19 +60,14 @@ app.whenReady().then(async () => {
         if (window) {
           const title = await window.webContents.getTitle();
           console.log(`[GeForce NOW] Current title: "${title}"`);
-
-          if (title.includes(" on GeForce NOW") && !notified) {
+          if (!notified) {
             console.log("Detected a game! showing notification.");
 
             new Notification({
               title: "GeForce NOW",
-              body: "Your gaming rig is ready!",
-              icon: path.join(__dirname, "assets/resources/infinitylogo.png"),
+              body: `${title.replace(' on GeForce NOW', '')} is ready to play`,
+              icon: path.join(process.cwd(), 'icon.png')
             }).show();
-
-            setTimeout(() => {
-              notified = false;
-            }, 10000); // Reset after 10s
 
             notified = true;
           } else {
@@ -92,8 +87,8 @@ app.whenReady().then(async () => {
     if (title.includes(" on GeForce NOW")) {
       console.log('Detected game title, maximizing window.');
       mainWindow.maximize();
-     console.log(notified);
       notified = false;
+
     }
   });
 
@@ -137,6 +132,7 @@ async function createWindow() {
   const mainWindow = new BrowserWindow({
     fullscreenable: true,
     show: false,
+    icon: path.join(process.cwd(), 'icon.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
                                        contextIsolation: false,
