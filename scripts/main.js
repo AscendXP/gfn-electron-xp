@@ -50,8 +50,13 @@ app.whenReady().then(async () => {
   session.defaultSession.webRequest.onBeforeRequest(
     { urls: ["wss://*/*"] },   // Thanks AstralVixen for this part of the code.
     async (details, callback) => {
-      const url = details.url;
-      const isNvidiaRequest = new URL(url).hostname.endsWith("nvidiagrid.net") && url.includes("/sign_in") && url.includes("peer_id");
+     const parsedUrl = new URL(url);
+const hostname = parsedUrl.hostname;
+
+const isNvidiaRequest =
+  (hostname === "nvidiagrid.net" || hostname.endsWith(".nvidiagrid.net")) &&
+  parsedUrl.pathname.includes("/sign_in") &&
+  parsedUrl.searchParams.has("peer_id");
 
       if (isNvidiaRequest) {
         console.log("Detected Nvidia Cloudmatch WebSocket upgrade request.");
