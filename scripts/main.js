@@ -11,12 +11,17 @@ console.log('Using user agent: ' + userAgent);
 console.log('Process arguments: ' + process.argv);
 
 app.commandLine.appendSwitch('log-level', '3');
-app.commandLine.appendSwitch('enable-features', 'VaapiVideoDecoder,VaapiIgnoreDriverChecks,AcceleratedVideoDecodeLinuxGL,UseOzonePlatform,UseOzonePlatform,TouchpadOverscrollHistoryNavigation,VaapiVideoDecodeLinuxGL');
-app.commandLine.appendSwitch("ozone-platform-hint", "auto");
-app.commandLine.appendSwitch("enable-wayland-ime");
-app.commandLine.appendSwitch("wayland-text-input-version", "2");
-app.commandLine.appendSwitch('enable-accelerated-video');
 app.commandLine.appendSwitch('ignore-gpu-blocklist');
+app.commandLine.appendSwitch('enable-accelerated-video');
+app.commandLine.appendSwitch('enable-zero-copy');
+app.commandLine.appendSwitch('enable-gpu-rasterization');
+app.commandLine.appendSwitch('enable-oop-rasterization');
+app.commandLine.appendSwitch('ozone-platform-hint', 'auto');
+app.commandLine.appendSwitch('enable-wayland-ime');
+app.commandLine.appendSwitch('wayland-text-input-version', '2');
+app.commandLine.appendSwitch('enable-features', 'VaapiVideoDecoder,VaapiIgnoreDriverChecks,VaapiVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxGL,UseOzonePlatform,TouchpadOverscrollHistoryNavigation');
+app.commandLine.appendSwitch('enable-hardware-video-decoding');
+app.commandLine.appendSwitch('enable-low-latency');
 
 process.on('uncaughtException', (err) => {
   console.error('Ignoring uncaught exception:', err);
