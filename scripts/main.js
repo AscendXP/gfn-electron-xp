@@ -38,7 +38,7 @@ JSON.parse(fs.readFileSync(configPath, 'utf-8')) :
 { crashCount: 0 };
 
 let discordIsRunning = false;
-let notified = false; // flag to prevent multiple notifications
+let notified = false;
 
 function isDiscordRunning() {
   return new Promise(resolve => {
@@ -135,6 +135,7 @@ app.on('window-all-closed', async function () {
 async function createWindow() {
   const mainWindow = new BrowserWindow({
     fullscreenable: true,
+    backgroundThrottling: false,
     show: false,
     icon: path.join(__dirname, "icon.png"),
                                        webPreferences: {
