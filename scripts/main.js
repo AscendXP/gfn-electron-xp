@@ -133,7 +133,6 @@ app.on('window-all-closed', async function () {
 async function createWindow() {
   const mainWindow = new BrowserWindow({
     fullscreenable: true,
-    backgroundThrottling: false,
     show: false,
     icon: path.join(__dirname, "icon.png"),
                                        webPreferences: {
