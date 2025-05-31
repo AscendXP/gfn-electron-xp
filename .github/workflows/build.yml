@@ -27,9 +27,9 @@ jobs:
       - name: Inject Electron version into artifact name
         run: node scripts/prebuild.js
 
-      - name: Build Linux AppImage + ZIP
+      - name: Build Linux AppImage + ZIP + DEB + RPM
         run: |
-          npx electron-builder --linux AppImage zip --x64 --arm64 --publish never
+          npx electron-builder --linux AppImage deb rpm zip --x64 --arm64 --publish never
 
       - name: Upload Linux Artifacts
         uses: actions/upload-artifact@v4
@@ -38,7 +38,9 @@ jobs:
           path: |
             dist/*.AppImage
             dist/*.zip
-
+            dist/*.deb
+            dist/*.rpm
+      
   build_windows:
     runs-on: windows-latest
 
@@ -147,4 +149,4 @@ jobs:
         fi
 
         echo "Uploading artifacts..."
-        gh release upload "$TAG" dist/linux/* dist/windows/* dist/*.AppImage --clobber
+        gh release upload "$TAG" dist/linux/* dist/windows/* dist/*.AppImage dist/*.deb dist/*.rpm --clobber
