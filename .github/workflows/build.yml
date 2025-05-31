@@ -149,4 +149,4 @@ jobs:
         fi
 
         echo "Uploading artifacts..."
-        gh release upload "$TAG" dist/linux/* dist/windows/* dist/*.AppImage dist/*.deb dist/*.rpm --clobber
+        gh release upload "$TAG" dist/linux/* dist/windows/* dist/*.AppImage "dist/"*.deb "dist/"*.rpm --clobber || true
