@@ -1,0 +1,150 @@
+name: Build, Release, and Publish
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight UTC
+
+jobs:
+  build_linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Inject Electron version into artifact name
+        run: node scripts/prebuild.js
+
+      - name: Build Linux AppImage + ZIP
+        run: |
+          npx electron-builder --linux AppImage zip --x64 --arm64 --publish never
+
+      - name: Upload Linux Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-artifacts
+          path: |
+            dist/*.AppImage
+            dist/*.zip
+
+  build_windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Inject Electron version into artifact name
+        run: node scripts/prebuild.js
+
+      - name: Build Windows EXE + ZIP
+        run: |
+          npx electron-builder --windows nsis zip --x64 --publish never
+
+      - name: Upload Windows Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-artifacts
+          path: |
+            dist/*.exe
+            dist/*.zip
+
+ 
+ 
+  release:
+    runs-on: ubuntu-latest
+    needs: [build_linux, build_windows]
+
+    steps:
+     - name: Checkout code
+       uses: actions/checkout@v4
+
+     - name: Download Linux artifacts
+       uses: actions/download-artifact@v4
+       with:
+        name: linux-artifacts
+        path: dist/linux
+
+     - name: Download Windows artifacts
+       uses: actions/download-artifact@v4
+       with:
+        name: windows-artifacts
+        path: dist/windows
+    # Step 7.5: Download prebuilt AppImages from repo
+     - name: Download prebuilt AppImages from repo
+       run: |
+          mkdir -p dist
+
+          curl -L -o "dist/GeForce_NOW_Auto-Update_-x86_64.AppImage" \
+            "https://raw.githubusercontent.com/AscendXP/gfn-electron-xp/main/GFN-Auto-Update-x86_64/GeForce_NOW_Auto-Update_-x86_64.AppImage"
+
+          curl -L -o "dist/GeForce_NOW_Auto-Update_-arm64.AppImage" \
+            "https://raw.githubusercontent.com/AscendXP/gfn-electron-xp/main/GFN-Auto-Update-arm64/GeForce_NOW_Auto-Update_-arm64.AppImage"
+
+      # Step 6: Get Electron version and set dynamic release name & notes
+     - name: Get Electron Version
+       id: get_tags
+       run: |
+          electron_tag=$(curl -s https://api.github.com/repos/electron/electron/releases/latest | jq -r .tag_name | sed 's/^v//')
+          echo "ELECTRON_TAG=$electron_tag" >> $GITHUB_ENV
+          echo "TAG=v$electron_tag" >> $GITHUB_ENV
+          echo "TITLE=GFN electron [Auto build Latest Electron: v$electron_tag]" >> $GITHUB_ENV
+     - name: Set dynamic release name and release notes
+       run: |
+          {
+            echo "⚠️ **Note**"
+            echo "This version was built automatically using the latest Electron release."
+            echo "Future updates of Electron may introduce breaking changes."
+            echo ""
+            echo "**Changelog:**"
+            echo "- ✅ Hardware Acceleration enabled by default"
+            echo "- 🛠️ Discord RPC fix, ESC button issue resolved, & Google account login fix"
+            echo "- 🛎️ Added notifications for when the game is ready"
+            echo "- 🧪 Experimental: arm64 & Windows .exe builds (untested)"
+            echo "- ♻️ Auto-builds to latest Electron version & Auto-update support included (in the build that say GeForce_NOW_Auto-Update)"
+            echo "- 🎹 Added support for switching between up to 5 user accounts using Ctrl+Shift+Alt+[1–5]"
+          } > release_notes.txt
+     - name: Setup GitHub CLI
+       run: sudo apt install -y gh
+
+     - name: Authenticate GitHub CLI
+       run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
+     - name: Create or Update GitHub Release
+       run: |
+        tag="${{ env.TAG }}"
+        title="${{ env.TITLE }}"
+        if gh release view "$TAG" &>/dev/null; then
+          echo "Release exists. Updating..."
+          gh release edit "$TAG" \
+            --title "$TITLE" \
+            --notes-file release_notes.txt
+        else
+          echo "Creating new release..."
+          gh release create "$TAG" \
+            --title "$TITLE" \
+            --notes-file release_notes.txt
+        fi
+
+        echo "Uploading artifacts..."
+        gh release upload "$TAG" dist/linux/* dist/windows/* dist/*.AppImage --clobber

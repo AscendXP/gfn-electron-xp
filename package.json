@@ -1,0 +1,62 @@
+{
+  "name": "geforcenow-electron",
+  "appId": "com.github.ascendxp.geforcenow-electron",
+  "productName": "GeForce NOW",
+  "version": "2.2.0-XP",
+  "description": "A Linux desktop web app for GeForce NOW",
+  "main": "scripts/main.js",
+  "scripts": {
+    "start": "electron .",
+    "prebuild": "node scripts/prebuild.js",
+    "build": "npm run prebuild && electron-builder --publish never"
+  },
+  "build": {
+    "asar": true,
+    "compression": "normal",
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "Games",
+      "artifactName": "${arch}-GeForce-NOW_electron-VERSION_linux.${ext}"
+    },
+    "extraFiles": [
+      "com.github.AscendXP.geforcenow-electron.desktop"
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "AscendXP",
+      "repo": "gfn-electron-xp",
+      "releaseType": "draft"
+    }
+  },
+  "repository": "https://github.com/AscendXP/gfn-electron-xp",
+  "keywords": [
+    "Electron",
+    "gfn",
+    "geforcenow",
+    "geforce-now"
+  ],
+  "author": "AscendXP Original by: Mlendea <io.github.hmlendea.cnzq9@SimpleLogin.fr>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "electron": "latest",
+    "electron-builder": "latest"
+  },
+  "dependencies": {
+    "discord-rich-presence": "latest"
+  }
+}
