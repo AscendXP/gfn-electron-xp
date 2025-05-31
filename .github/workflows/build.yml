@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
@@ -51,7 +51,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
@@ -122,7 +122,7 @@ jobs:
             echo "- ✅ Hardware Acceleration enabled by default"
             echo "- 🛠️ Discord RPC fix, ESC button issue resolved, & Google account login fix"
             echo "- 🛎️ Added notifications for when the game is ready"
-            echo "- 🧪 Experimental: arm64 & Windows .exe builds (untested)"
+            echo "- 🧪 Experimental: arm64, Windows .exe, .deb & .rpm builds (untested)"
             echo "- ♻️ Auto-builds to latest Electron version & Auto-update support included (in the build that say GeForce_NOW_Auto-Update)"
             echo "- 🎹 Added support for switching between up to 5 user accounts using Ctrl+Shift+Alt+[1–5]"
           } > release_notes.txt
