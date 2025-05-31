@@ -11,7 +11,7 @@ Go to the [latest release](https://github.com/AscendXP/gfn-electron-xp/releases/
 
 🛎️ Notifications when the game is ready  
 
-🧪 Experimental: arm64 & Windows .exe builds (untested)
+🧪 Experimental: arm64, Windows .exe, .deb & .rpm builds  (untested)
 
 ♻️ Auto-builds with latest Electron + Auto-update support (in builds labeled GeForce_NOW_Auto-Update)
 
