@@ -136,17 +136,23 @@ jobs:
        run: |
         tag="${{ env.TAG }}"
         title="${{ env.TITLE }}"
-        if gh release view "$TAG" &>/dev/null; then
-          echo "Release exists. Updating..."
-          gh release edit "$TAG" \
-            --title "$TITLE" \
-            --notes-file release_notes.txt
+
+        if gh release view "$tag" &>/dev/null; then
+        echo "Release exists. Updating..."
+        gh release edit "$tag" \
+        --title "$title" \
+        --notes-file release_notes.txt
         else
-          echo "Creating new release..."
-          gh release create "$TAG" \
-            --title "$TITLE" \
-            --notes-file release_notes.txt
+        echo "Creating new release..."
+        gh release create "$tag" \
+        --title "$title" \
+        --notes-file release_notes.txt
         fi
 
         echo "Uploading artifacts..."
-        gh release upload "$TAG" dist/linux/* dist/windows/* dist/*.AppImage "dist/"*.deb "dist/"*.rpm --clobber || true
+        shopt -s nullglob
+  
+        for file in dist/linux/* dist/windows/* dist/*.AppImage dist/*.deb dist/*.rpm; do
+        echo "Uploading $file"
+         gh release upload "$tag" "$file" --clobber
+           done
