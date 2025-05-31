@@ -6,9 +6,13 @@ Go to the [latest release](https://github.com/AscendXP/gfn-electron-xp/releases/
 🎹 Added support for switching between up to 5 user accounts using Ctrl+Shift+Alt+[1–5]
 
 ✅ Hardware Acceleration enabled by default  
+
 🛠️ Fixed: Discord RPC, ESC key behavior, and Google account login  
+
 🛎️ Notifications when the game is ready  
-🧪 Experimental: arm64 & Windows .exe builds (untested) 
+
+🧪 Experimental: arm64 & Windows .exe builds (untested)
+
 ♻️ Auto-builds with latest Electron + Auto-update support (in builds labeled GeForce_NOW_Auto-Update)
 
 ## About
