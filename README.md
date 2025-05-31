@@ -1,4 +1,4 @@
-# Geforce NOW for Linux
+# Geforce NOW for Linux/Windows (Electron)
 Go to the [latest release](https://github.com/AscendXP/gfn-electron-xp/releases/latest).
 ![Geforce-now](https://github.com/user-attachments/assets/5968ad3b-fabc-40cc-ab86-1f39eda7a8fa)
 
