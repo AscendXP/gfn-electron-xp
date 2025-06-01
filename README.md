@@ -65,3 +65,7 @@ npm install
 # Links
  - [GeForce NOW](https://nvidia.com/en-eu/geforce-now)
  - [Troubleshooting](https://github.com/hmlendea/gfn-electron/wiki/Troubleshooting)
+---
+
+This project is based on [hmlendea/gfn-electron](https://github.com/hmlendea/gfn-electron), which has been archived.  
+All credit to the original author. (adding my own improvements)
