@@ -10,13 +10,10 @@ console.log('Process arguments: ' + process.argv);
 app.commandLine.appendSwitch('log-level', '3');
 app.commandLine.appendSwitch('ignore-gpu-blocklist');
 app.commandLine.appendSwitch('enable-accelerated-video');
-app.commandLine.appendSwitch('enable-zero-copy');
-app.commandLine.appendSwitch('enable-gpu-rasterization');
-app.commandLine.appendSwitch('enable-oop-rasterization');
 app.commandLine.appendSwitch('ozone-platform-hint', 'auto');
 app.commandLine.appendSwitch('enable-wayland-ime');
 app.commandLine.appendSwitch('wayland-text-input-version', '2');
-app.commandLine.appendSwitch('enable-features', 'VaapiVideoDecoder,AcceleratedVideoEncoder,VaapiIgnoreDriverChecks,VaapiOnNvidiaGPUs,VaapiVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxGL,UseOzonePlatform,TouchpadOverscrollHistoryNavigation');
+app.commandLine.appendSwitch('enable-features', 'AcceleratedVideoDecodeLinuxZeroCopyGL,VaapiVideoDecoder,AcceleratedVideoEncoder,VaapiIgnoreDriverChecks,VaapiOnNvidiaGPUs,VaapiVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxGL,UseOzonePlatform,TouchpadOverscrollHistoryNavigation');
 process.on('uncaughtException', (err) => {
   console.error('Ignoring uncaught exception:', err);
 });
