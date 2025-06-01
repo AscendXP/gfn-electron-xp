@@ -104,7 +104,7 @@ function createWindowForUser(userId) {
       userSessions[userId].show();
       new Notification({
         title: "Account Active",
-        body: `Now using ${userId}`,
+        body: `Now using ${userId}.\nUse Ctrl+Shift+Alt+1–5 to switch profiles.`,
         icon: path.join(__dirname, "icon.png")
       }).show();
     });
