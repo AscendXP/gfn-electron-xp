@@ -13,7 +13,6 @@ app.commandLine.appendSwitch('enable-accelerated-video');
 app.commandLine.appendSwitch('ozone-platform-hint', 'auto');
 app.commandLine.appendSwitch('enable-wayland-ime');
 app.commandLine.appendSwitch('wayland-text-input-version', '2');
-app.commandLine.appendSwitch('disable-gpu-memory-buffer-video-frames');
 app.commandLine.appendSwitch('enable-features', 'AcceleratedVideoDecodeLinuxZeroCopyGL,VaapiVideoDecoder,AcceleratedVideoEncoder,VaapiIgnoreDriverChecks,VaapiOnNvidiaGPUs,VaapiVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxGL,UseOzonePlatform,TouchpadOverscrollHistoryNavigation');
 process.on('uncaughtException', (err) => {
   console.error('Ignoring uncaught exception:', err);
